@@ -1,0 +1,166 @@
+@import './variable';
+
+.inner {
+  width: 100%;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 10px 0;
+
+  h1 {
+    text-align: left;
+  }
+
+  &__logo {
+    width: 80px;
+  }
+
+  &__list {
+    display: flex;
+
+    & > li {
+      margin-left: 30px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      color: #666;
+      font : {
+        size: 16px;
+        weight: bold;
+      }
+  
+      &:hover {
+        color: $brandColor;
+      }
+    }
+  }
+}
+
+.parent {
+  padding: 70px 0;
+  background-color: #fff;
+
+  &__ttl {
+    color: #333;
+    text-align: center;
+    font: {
+      size: 20px;
+      weight: bold;
+    }
+  }
+}
+
+.children {
+  &__ttl {
+    @extend .parent__ttl;
+    background-color: #f5f5f5;
+  }
+}
+
+// @mixin btn($color) {
+//   display: block;
+//   padding: 20px 30px;
+//   color: #fff;
+//   border-radius: 6px;
+//   cursor: pointer;
+//   background-color: $color;
+//   text: {
+//     decoration: none;
+//     align: center;
+//   }
+// }
+
+.footer {
+  padding: 70px 0;
+
+  &__sns {
+    &__list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      & > li {
+        width: 32%;
+
+        &:nth-child(n+4) {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    // 問題1
+    &__btn {
+      // &.is-facebook {
+      //   @include btn(#4668b3);
+      // }
+      // &.is-google {
+      //   @include btn(#de5745);
+      // }
+      // &.is-twitter {
+      //   @include btn(#2fbbed);
+      // }
+      // &.is-pinterest {
+      //   @include btn(#de5745);
+      // }
+      // &.is-behance {
+      //   @include btn(#3079ff);
+      // }
+      // &.is-dribbble {
+      //   @include btn(#eb6397);
+      // }
+
+    // 問題2
+      // $btnList: facebook, google, twitter, pinterest, behance, dribbble;
+      // $btnColor: #4668b3, #de5745, #2fbbed, #de5745, #3079ff, #eb6397;
+      // @each $btnName in $btnList {
+      //   $index_key: index($btnList, $btnName);
+      //   &.is-#{$btnName} {
+      //     @include btn(nth($btnColor, $index_key));
+      //   }
+      // }
+
+    // 問題3
+      @each $btnName, $prop in $btnList {
+        &.is-#{$btnName} {
+          // $btn-color: map-get($prop, btn-color);
+          @include btn(map-get($prop, btn-color));
+        }
+      }
+
+      // $btnList: (
+      //   facebook: #4668b3,
+      //   google: #de5745,
+      //   twitter: #2fbbed,
+      //   pinterest: #de5745,
+      //   behance: #3079ff,
+      //   dribbble: #eb6397
+      // );
+      // @each $btnName, $prop in $btnList {
+      //   // @debug $btnName;
+      //   // @debug $prop;
+      //   &.is-#{$btnName} {
+      //     @include btn($prop);
+      //   }
+      // }
+    }
+  }
+}

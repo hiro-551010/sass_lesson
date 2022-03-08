@@ -1,0 +1,36 @@
+$maxWidth: 1000px;
+$brandColor: #cd6799;
+
+$btnList: (
+  facebook: (
+    btn-color: #4668b3
+  ),
+  google: (
+    btn-color: #de5745
+  ),
+  twitter: (
+    btn-color: #2fbbed
+  ),
+  pinterest: (
+    btn-color: #de5745
+  ),
+  behance: (
+    btn-color: #3079ff
+  ),
+  dribbble: (
+    btn-color: #eb6397
+  )
+);
+
+@mixin btn($color) {
+  display: block;
+  padding: 20px 30px;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: $color;
+  text: {
+    decoration: none;
+    align: center;
+  }
+}
